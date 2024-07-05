@@ -203,7 +203,7 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'))
 async function getNews(ctx, regions, currencies) {
     regions = regions || ['en'];
     currencies = currencies || [];
-    const news = await newsService.fetchNewsForRegions(regions, currencies);
+    const news = await newsService.fetchNewsForRegions(regions, currencies, process.env.NEWS_API_TOKEN);
     console.log(regions.toString(), currencies.toString());
     sendNewsUpdate(ctx, news);
 }
